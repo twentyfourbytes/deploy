@@ -12,11 +12,13 @@ services:
       - "53:53/udp"
       - "53:53"
   api:
-      depends_on:
+    depends_on:
       - redis
     build:
       context: ./api
       dockerfile: Dockerfile
+    volumes:
+      - ./config.json:/root/api/config.json
     ports:
       - "8000:8000"
   redis:
