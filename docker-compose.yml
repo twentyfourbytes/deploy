@@ -18,7 +18,7 @@ services:
       context: ./api
       dockerfile: Dockerfile
     volumes:
-      - ./config.json:/root/api/config.json
+      - ./api/config.json:/root/api/config.json
     ports:
       - "8000:8000"
   redis:
