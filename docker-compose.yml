@@ -1,0 +1,27 @@
+version: '3'
+services:
+  dns:
+    depends_on:
+      - redis
+    build:
+      context: ./coredns
+      dockerfile: Dockerfile
+    volumes:
+      - ./Corefile:/go/bin/Corefile
+    ports:
+      - "53:53/udp"
+      - "53:53"
+  api:
+      depends_on:
+      - redis
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+  redis:
+    image: redis:latest
+    
+      
+
+

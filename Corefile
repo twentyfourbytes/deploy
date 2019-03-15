@@ -1,6 +1,6 @@
 .:53 {
     interceptor redis {
-        ip 127.0.0.1
+        ip redis
         port 6379
     }
     log
