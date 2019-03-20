@@ -21,6 +21,12 @@ services:
       - ./api/config.json:/root/api/config.json
     ports:
       - "8000:8000"
+  app:
+    build:
+      context: ./app
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
   redis:
     image: redis:latest
     
