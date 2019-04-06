@@ -1,7 +1,7 @@
 version: '3'
 services:
   dns:
-    image: twentyfourbytes/interceptorlatest
+    image: twentyfourbytes/interceptor:39ffc7b
     depends_on:
       - redis
     volumes:
@@ -9,16 +9,18 @@ services:
     ports:
       - "53:53/udp"
       - "53:53"
-  api:
+  api: 
     depends_on:
       - redis
-    image: twentyfourbytes/backend:latest
+    image: twentyfourbytes/backend:010cd0a
     volumes:
       - ./api/config.json:/root/api/config.json
     ports:
       - "8000:8000"
   app:
-    image: twentyfourbytes/frontendlatest
+    image: twentyfourbytes/frontend:91c7f15
+    volumes:
+      - ./api/config.json:/root/twentyfourbytes/config.json
     ports:
       - "3000:3000"
   redis:
