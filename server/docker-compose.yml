@@ -1,0 +1,29 @@
+version: '3'
+services:
+  dns:
+    image: twentyfourbytes/interceptorlatest
+    depends_on:
+      - redis
+    volumes:
+      - ./Corefile:/go/bin/Corefile
+    ports:
+      - "53:53/udp"
+      - "53:53"
+  api:
+    depends_on:
+      - redis
+    image: twentyfourbytes/backend:latest
+    volumes:
+      - ./api/config.json:/root/api/config.json
+    ports:
+      - "8000:8000"
+  app:
+    image: twentyfourbytes/frontendlatest
+    ports:
+      - "3000:3000"
+  redis:
+    image: redis:latest
+    
+      
+
+
