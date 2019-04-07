@@ -11,7 +11,6 @@ services:
       - "53:53"
     deploy:
       mode: global
-      endpoint_mode: dnsrr
   api: 
     depends_on:
       - redis
@@ -22,7 +21,6 @@ services:
       - "8000:8000"
     deploy:
       mode: global
-      endpoint_mode: dnsrr
   app:
     image: twentyfourbytes/frontend:91c7f15
     volumes:
@@ -31,13 +29,10 @@ services:
       - "3000:3000"
     deploy:
       mode: global
-      endpoint_mode: dnsrr
   redis:
     image: redis:latest
     deploy:
-      mode: global
-      endpoint_mode: dnsrr
-    
+      mode: global    
       
 
 
