@@ -4,8 +4,8 @@ services:
     image: twentyfourbytes/interceptor:39ffc7b
     depends_on:
       - redis
-    volumes:
-      - ./Corefile:/go/bin/Corefile
+    configs:
+      - source: dnsConfig
     ports:
       - "53:53/udp"
       - "53:53"
@@ -15,16 +15,18 @@ services:
     depends_on:
       - redis
     image: twentyfourbytes/backend:010cd0a
-    volumes:
-      - ./api/config.json:/root/api/config.json
+    configs:
+      - source: apiConfig
+        target: /root/api/config.json
     ports:
       - "8000:8000"
     deploy:
       mode: global
   app:
     image: twentyfourbytes/frontend:91c7f15
-    volumes:
-      - ./api/config.json:/root/twentyfourbytes/config.json
+    configs:
+      - source: appConfig
+        target: /root/twentyfourbytes/config.json
     ports:
       - "3000:3000"
     deploy:
@@ -33,6 +35,12 @@ services:
     image: redis:latest
     deploy:
       mode: global    
-      
+configs:
+  appConfig:
+    file: ./app/config.json
+  apiConfig:
+    file: ./api/config.json
+  dnsConfig:
+    file: ./Corefile
 
 
