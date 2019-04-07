@@ -1,5 +1,11 @@
 {
-    "api":"http://twentyfourbytes.com:8000",
-    "dnsapi":"app:8000"
+    "api":{
+      "host":"http://twentyfourbytes.com",
+      "port":":8000"
+    },
+    "dnsapi":{
+      "host":"api",
+      "port":":8000"
+    }
   }
   

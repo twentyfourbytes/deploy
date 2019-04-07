@@ -3,7 +3,8 @@ FROM golang:alpine
 RUN apk update && apk add --no-cache git
 
 WORKDIR /root
-RUN git clone https://github.com/niktrix/coredns.git
+RUN git clone https://github.com/twentyfourbytes/coredns.git
+RUN git checkout twentyfourbytes
 
 WORKDIR  /root/coredns
 RUN git checkout twentyfourbytes
